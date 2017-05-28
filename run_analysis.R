@@ -26,38 +26,34 @@ setwd("~/Downloads/UCI HAR Dataset")
 features <- read.table("features.txt")
 activity_labels <- read.table("activity_labels.txt")
 
-setwd("~/Downloads/UCI HAR Dataset/test")
-subject_test <- read.table("subject_test.txt")
-X_test <- read.table("X_test.txt")
-Y_test <- read.table("Y_test.txt")
+subject_test <- read.table("test/subject_test.txt")
+X_test <- read.table("test/X_test.txt")
+Y_test <- read.table("test/Y_test.txt")
 
-# setwd("~/Downloads/UCI HAR Dataset/test/Inertial Signals")
-# body_acc_x_test <- read.table("body_acc_x_test.txt")
-# body_acc_y_test <- read.table("body_acc_y_test.txt")
-# body_acc_z_test <- read.table("body_acc_z_test.txt")
-# body_gyro_x_test <- read.table("body_gyro_x_test.txt")
-# body_gyro_y_test <- read.table("body_gyro_y_test.txt")
-# body_gyro_z_test <- read.table("body_gyro_z_test.txt")
-# total_acc_x_test <- read.table("total_acc_x_test.txt")
-# total_acc_y_test <- read.table("total_acc_y_test.txt")
-# total_acc_z_test <- read.table("total_acc_z_test.txt")
+body_acc_x_test <- read.table("test/Inertial Signals/body_acc_x_test.txt")
+body_acc_y_test <- read.table("test/Inertial Signals/body_acc_y_test.txt")
+body_acc_z_test <- read.table("test/Inertial Signals/body_acc_z_test.txt")
+body_gyro_x_test <- read.table("test/Inertial Signals/body_gyro_x_test.txt")
+body_gyro_y_test <- read.table("test/Inertial Signals/body_gyro_y_test.txt")
+body_gyro_z_test <- read.table("test/Inertial Signals/body_gyro_z_test.txt")
+total_acc_x_test <- read.table("test/Inertial Signals/total_acc_x_test.txt")
+total_acc_y_test <- read.table("test/Inertial Signals/total_acc_y_test.txt")
+total_acc_z_test <- read.table("test/Inertial Signals/total_acc_z_test.txt")
 
 
-setwd("~/Downloads/UCI HAR Dataset/train")
-subject_train <- read.table("subject_train.txt")
-X_train <- read.table("X_train.txt")
-Y_train <- read.table("Y_train.txt")
+subject_train <- read.table("train/subject_train.txt")
+X_train <- read.table("train/X_train.txt")
+Y_train <- read.table("train/Y_train.txt")
 
-# setwd("~/Downloads/UCI HAR Dataset/train/Inertial Signals")
-# body_acc_x_train <- read.table("body_acc_x_train.txt")
-# body_acc_y_train <- read.table("body_acc_y_train.txt")
-# body_acc_z_train <- read.table("body_acc_z_train.txt")
-# body_gyro_x_train <- read.table("body_gyro_x_train.txt")
-# body_gyro_y_train <- read.table("body_gyro_y_train.txt")
-# body_gyro_z_train <- read.table("body_gyro_z_train.txt")
-# total_acc_x_train <- read.table("total_acc_x_train.txt")
-# total_acc_y_train <- read.table("total_acc_y_train.txt")
-# total_acc_z_train <- read.table("total_acc_z_train.txt")
+body_acc_x_train <- read.table("train/Inertial Signals/body_acc_x_train.txt")
+body_acc_y_train <- read.table("train/Inertial Signals/body_acc_y_train.txt")
+body_acc_z_train <- read.table("train/Inertial Signals/body_acc_z_train.txt")
+body_gyro_x_train <- read.table("train/Inertial Signals/body_gyro_x_train.txt")
+body_gyro_y_train <- read.table("train/Inertial Signals/body_gyro_y_train.txt")
+body_gyro_z_train <- read.table("train/Inertial Signals/body_gyro_z_train.txt")
+total_acc_x_train <- read.table("train/Inertial Signals/total_acc_x_train.txt")
+total_acc_y_train <- read.table("train/Inertial Signals/total_acc_y_train.txt")
+total_acc_z_train <- read.table("train/Inertial Signals/total_acc_z_train.txt")
 
 
 ## Step 1: Merges the training and the test sets to create one data set.
@@ -65,17 +61,17 @@ X <- rbind(X_test, X_train)
 Y <- rbind(Y_test, Y_train)
 subject <- rbind(subject_test, subject_train)
 
-# body_acc_x <- rbind(body_acc_x_test, body_acc_x_train)
-# body_acc_y <- rbind(body_acc_y_test, body_acc_y_train)
-# body_acc_z <- rbind(body_acc_z_test, body_acc_z_train)
-# 
-# body_gyro_x <- rbind(body_gyro_x_test, body_gyro_x_train)
-# body_gyro_y <- rbind(body_gyro_y_test, body_gyro_y_train)
-# body_gyro_z <- rbind(body_gyro_z_test, body_gyro_z_train)
-# 
-# total_acc_x <- rbind(total_acc_x_test, total_acc_x_train)
-# total_acc_y <- rbind(total_acc_y_test, total_acc_y_train)
-# total_acc_z <- rbind(total_acc_z_test, total_acc_z_train)
+body_acc_x <- rbind(body_acc_x_test, body_acc_x_train)
+body_acc_y <- rbind(body_acc_y_test, body_acc_y_train)
+body_acc_z <- rbind(body_acc_z_test, body_acc_z_train)
+
+body_gyro_x <- rbind(body_gyro_x_test, body_gyro_x_train)
+body_gyro_y <- rbind(body_gyro_y_test, body_gyro_y_train)
+body_gyro_z <- rbind(body_gyro_z_test, body_gyro_z_train)
+
+total_acc_x <- rbind(total_acc_x_test, total_acc_x_train)
+total_acc_y <- rbind(total_acc_y_test, total_acc_y_train)
+total_acc_z <- rbind(total_acc_z_test, total_acc_z_train)
 
 # release the memory as the data have been merged and copied
 rm(list = ls(pattern = "test"))
@@ -122,5 +118,5 @@ final_tidy <- final_data %>%
 final_tidy <- arrange(final_tidy, subjectId)
 
 # write output and clean env
-write.table(final_tidy, '~/Downloads/UCI HAR Dataset/tidy_data.txt',row.names=FALSE,sep=' ');
+write.table(final_tidy, 'tidy_data.txt',row.names=FALSE,sep=" ")
 # rm(list=ls())
