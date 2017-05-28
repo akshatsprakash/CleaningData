@@ -24,5 +24,8 @@ You should create one R script called run_analysis.R that does the following.
 4. Appropriately labels the data set with descriptive activity names. 
 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
-### Additional Information
-You can find additional information about the variables, data and transformations in the CodeBook.MD file.
+### Package List
+1. ReadMe.MD: This file
+2. run_analysis.R: Program for Human+Activity+Recognition data cleanding and transformation
+3. tidy_data.txt: Output of the R script above
+4. CodeBook.MD: Information about the variables, data and transformations for tidy_data.txt
