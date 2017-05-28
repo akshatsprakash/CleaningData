@@ -15,56 +15,37 @@ The experiments have been carried out with a group of 30 volunteers within an ag
 
 The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
 
-### Attribute Information
-For each record in the dataset it is provided: 
-- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration. 
-- Triaxial Angular velocity from the gyroscope. 
-- A 561-feature vector with time and frequency domain variables. 
-- Its activity label. 
-- An identifier of the subject who carried out the experiment.
+### Identifier Information
+activityName - The type of activity performed when the corresponding measurements were taken (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
+subjectId - The ID of the test subject (1 to 30)
 
-### Section 0. After setting the environment, read into tables the data located in
-- features.txt
-- activity_labels.txt
-- subject_test.txt
-- x_test.txt
-- y_test.txt
-- body_acc_x_test.txt
-- body_acc_y_test.txt
-- body_acc_z_test.txt
-- body_gyro_x_test.txt
-- body_gyro_y_test.txt
-- body_gyro_z_test.txt
-- total_acc_x_test.txt
-- total_acc_y_test.txt
-- total_acc_z_test.txt
-- subject_train.txt
-- x_train.txt
-- y_train.txt
-- body_acc_x_train.txt
-- body_gyro_x_train.txt
-- total_acc_x_train.txt
-- body_acc_y_train.txt
-- body_gyro_y_train.txt
-- total_acc_y_train.txt
-- body_acc_z_train.txt
-- body_gyro_z_train.txt
-- total_acc_z_train.txt
+### Measurement Information
+For each observations in the dataset it is provided for: 
+- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- Triaxial Angular velocity from the gyroscope.
+- A 561-feature vector with time and frequency domain variables.
 
+Following steps have been performed on the raw data to arrive at the tidy data:
+* For each subject the data for training and testing has been merged
+* All measurements except mean and standard deviation of the data have been filtered out
+* mean for each subject and activity has been taken
 
-### Section 1. Merge the training and the test sets to create one data set.
-Merge to create one data set and assign column names (only non-signal data)
-
-
-## Section 2. Extract only the measurements on the mean and standard deviation for each measurement. 
-Subset the data frame keeping necessary column names only
-
-## Section 3. Use descriptive activity names to name the activities in the data set.
-Merge data subset with the activityType table to inlude the descriptive activity names.
-
-## Section 4. Appropriately label the data set with descriptive activity names.
-Use gsub and sapply functions for pattern replacement to clean up the data labels.
-
-## Section 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
-Create another data set using group_by and summerize_each functions 
-to get average of each veriable for each activity and subject
+Mean of the following variables for each subject for their respective activity is recorded:
+- timeBodyAccMagnitudeMean
+- timeBodyAccMagnitudeStdDev
+- timeGravityAccMagnitudeMean
+- timeGravityAccMagnitudeStdDev
+- timeBodyAccJerkMagnitudeMean
+- timeBodyAccJerkMagnitudeStdDev
+- timeBodyGyroMagnitudeMean
+- timeBodyGyroMagnitudeStdDev"    
+- timeBodyGyroJerkMagnitudeMean
+- timeBodyGyroJerkMagnitudeStdDev"
+- freqBodyAccMagnitudeMean
+- freqBodyAccMagnitudeStdDev"     
+- freqBodyAccJerkMagnitudeMean
+- freqBodyAccJerkMagnitudeStdDev" 
+- freqBodyGyroMagnitudeMean
+- freqBodyGyroMagnitudeStdDev"    
+- freqBodyGyroJerkMagnitudeMean
+- freqBodyGyroJerkMagnitudeStdDev"
